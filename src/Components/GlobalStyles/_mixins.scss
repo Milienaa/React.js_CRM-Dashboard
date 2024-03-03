@@ -1,0 +1,66 @@
+// All media
+@mixin media($min-size) {
+    @media screen and (min-width:$min-size) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @include media(540px) {
+        @content;
+    }
+
+    ;
+}
+
+@mixin tablet {
+    @include media(768px) {
+        @content;
+    }
+
+    ;
+}
+
+@mixin screen {
+    @include media(1200px) {
+        @content;
+    }
+
+    ;
+}
+
+
+// transition
+@mixin transition($property, $delay: .5s) {
+    transition: {
+        delay: $delay;
+        duration: .5s;
+        property: $property
+    }
+}
+
+// btns
+@mixin btn_variant($bg, $border, $text: $border) {
+    background: {
+        color: $bg;
+    }
+
+    border: 1px solid $border;
+    color: $text;
+    @include transition('background, color, border-color', 0);
+
+    &:hover {
+        background: {
+            color: $border;
+        }
+
+        color: $accent5;
+    }
+}
+
+// structure
+%inner_structure {
+    display: grid;
+    grid-template-rows: 42px 1fr 42px;
+    gap: 55px;
+}
